@@ -24,7 +24,63 @@ git clone https://github.com/tcrurav/QtHttpServerCRUD.git
 
 Open and run the project from the Qt Creator.
 
+You can test the endpoints with the following POSTMAN:
+https://documenter.getpostman.com/view/3446841/2s9YyvB1CQ
+
+It's IMPORTANT to mention that the following header is necessary to do the POST, PUT and DELETE:
+![screenshots](screenshots/screenshot-01.png)
+
+this header value must match the line in main.cpp:
+![screenshots](screenshots/screenshot-02.png)
+
 Enjoy!!!
+
+## Curl requests
+
+GET http://127.0.0.1:49080/v2/contact
+````
+curl --location 'http://127.0.0.1:49080/v2/contact'
+````
+
+GET http://127.0.0.1:49080/v2/contact/1
+````
+curl --location 'http://127.0.0.1:49080/v2/contact/1'
+````
+
+GET http://127.0.0.1:49080
+````
+curl --location 'http://127.0.0.1:49080'
+````
+
+POST http://localhost:49080/v2/contact
+````
+curl --location 'http://localhost:49080/v2/contact' \
+--header 'api_key: SecretKey' \
+--data '{
+    "address":"una dirección",
+    "name":"tiburcio"
+}'
+````
+
+PUT http://localhost:49080/v2/contact/1
+````
+curl --location --request PUT 'http://localhost:49080/v2/contact/1' \
+--header 'api_key: SecretKey' \
+--data '{
+    "address":"otra cosita",
+    "name":"tiburcio"
+}'
+````
+
+DELETE http://localhost:49080/v2/contact/1
+````
+curl --location --request DELETE 'http://localhost:49080/v2/contact/1' \
+--header 'api_key: SecretKey' \
+--data '{
+    "address":"otra cosita",
+    "name":"tiburcio"
+}'
+````
 
 ## Built With
 
